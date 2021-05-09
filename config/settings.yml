@@ -1,0 +1,3 @@
+plugins:
+  evidence_uploader_enabled:
+    default: true
