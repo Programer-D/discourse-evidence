@@ -1,6 +1,6 @@
 # name: discourse-evidence
 # version: 0.7.0
-
+gem 'aws-sdk'
 enabled_site_setting :evidence_uploader_enabled
 
 after_initialize do

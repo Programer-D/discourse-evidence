@@ -1,5 +1,0 @@
-services:
-  - docker
-
-before_install:
-  - gem install aws-sdk
