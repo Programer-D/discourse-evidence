@@ -1,7 +1,7 @@
 # name: discourse-evidence
 # version: 0.7.0
 gem 'aws-sdk-dynamodb', '1.60.0'
-gem 'aws-sdk-s3', '1.94.1'
+gem 'aws-sdk-s3', '1.94.0'
 enabled_site_setting :evidence_uploader_enabled
 
 after_initialize do
