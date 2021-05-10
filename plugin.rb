@@ -13,5 +13,6 @@ after_initialize do
       get "#{root_path}/:username/preferences/evidence_uploader" => 'evidence_uploader#index'
     end
     post '/evidences' => 'evidences#update'
+    post '/evidence_check' => 'evidence_uploader#check'
   end
 end
