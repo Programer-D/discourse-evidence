@@ -20,7 +20,7 @@ class EvidenceUploaderController < ApplicationController
       }
     }
     result = dynamodb.query(query_condition)
-    if current_user.primary_group_id == 41
+    if current_user.primary_group_id != 41
       evidence = true
     else
       evidence = false
