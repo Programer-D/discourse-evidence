@@ -4,6 +4,10 @@ export default Ember.Controller.extend({
       const ember_controller = this;
       let form_data = new FormData($('#evidence_form').get(0))
       form_data.append('id', Date.now())
+      if(form_data.get('company_name') === ""){
+        $('#state').html('会社名を入力してください。');
+        return false
+      }
       $.ajax({
         url: "/evidences",
         type: "POST",
