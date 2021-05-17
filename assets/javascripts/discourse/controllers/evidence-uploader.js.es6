@@ -3,8 +3,12 @@ export default Ember.Controller.extend({
     upload_evidence: function (event) {
       const ember_controller = this;
       let form_data = new FormData($('#evidence_form').get(0))
+      if (form_data.get('need_evidence') === 'true' && form_data.get('evidence').size === 0) {
+        $('#state').html('既に承認済み社会人で無い場合、画像は必須です。');
+        return false
+      }
       form_data.append('id', Date.now())
-      if(form_data.get('company_name') === ""){
+      if (form_data.get('company_name') === "") {
         $('#state').html('会社名を入力してください。');
         return false
       }
@@ -38,22 +42,31 @@ export default Ember.Controller.extend({
       type: "POST"
     })
       .done(function (data, textStatus, jqXHR) {
-        ember_controller.set('isRegistered', true);
-        ember_controller.set('id', data.data.id);
-        ember_controller.set('company_name', data.data.company_name);
-        ember_controller.set('matching', data.data.matching === 'accept');
-        let state = '';
-        if (data.data.state == 10) {
-          state = '審査中'
-        } else if (data.data.state == 11) {
-          state = '承認済み'
+        console.log(data);
+        if (data.data.registered) {
+          ember_controller.set('isRegistered', true);
+          ember_controller.set('id', data.data.id);
+          ember_controller.set('company_name', data.data.company_name);
+          ember_controller.set('matching', data.data.matching === 'accept');
+          let state = '';
+          if (data.data.state == 10) {
+            state = '審査中'
+          } else if (data.data.state == 1 || data.data.state == 50) {
+            state = '承認済み'
+          } else {
+            state = '保留'
+          }
+          ember_controller.set('state', state)
+          return true
         } else {
-          state = '保留'
+          ember_controller.set('evidence', data.data.evidence === 'required')
+          return false
         }
-        ember_controller.set('state', state)
-        return true
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
+        console.log(jqXHR);
+        console.log(textStatus);
+        console.log(errorThrown);
         ember_controller.set('isRegistered', false);
         return false
       })
