@@ -1,3 +1,4 @@
+<div id="side-bar"></div>
 <section class='user-content'>
   <h1>マッチング・お勤め先の所属証明の提出</h1>
   <form id="evidence_form" action="/evidences" method="POST" enctype="multipart/form-data">
@@ -22,15 +23,16 @@
       <p>会社等に在籍していることを確認できる書類（名刺or社員証）＋身分証名証（保険証、運転免許証など）を1枚の画像に収めてください。新社会人は必須です。</p>
 
       <hr>
+      <p>この情報をマッチングに利用しますか？</p>
+      <input type="radio" name="matching" value="accept">はい
+      <input type="radio" name="matching" value="reject" checked>いいえ
+      <hr>
+      <button type='button' class='btn btn-primary' {{action "upload_evidence"}}>
+        審査申請
+      </button>
+      <p id="state"></p>
     {{/if}}
-    <p>この情報をマッチングに利用しますか？</p>
-    <input type="radio" name="matching" value="accept">はい
-    <input type="radio" name="matching" value="reject" checked>いいえ
-    <hr>
-    <button type='button' class='btn btn-primary' {{action "upload_evidence"}}>
-      審査申請
-    </button>
-    <p id="state"></p>
+
 
   </form>
 
