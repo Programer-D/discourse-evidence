@@ -1,4 +1,5 @@
-export default Ember.Controller.extend({
+import Controller from "@ember/controller";
+export default Controller.extend({
   actions: {
     upload_evidence: function (event) {
       const ember_controller = this;
