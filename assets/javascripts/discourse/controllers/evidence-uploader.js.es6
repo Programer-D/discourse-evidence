@@ -4,10 +4,6 @@ export default Controller.extend({
     upload_evidence: function (event) {
       const ember_controller = this;
       let form_data = new FormData($('#evidence_form').get(0))
-      if (form_data.get('need_evidence') === 'true' && form_data.get('evidence').size === 0) {
-        $('#state').html('既に承認済み社会人で無い場合、画像は必須です。');
-        return false
-      }
       form_data.append('id', Date.now())
       if (form_data.get('company_name') === "") {
         $('#state').html('会社名を入力してください。');
@@ -59,9 +55,6 @@ export default Controller.extend({
           }
           ember_controller.set('state', state)
           return true
-        } else {
-          ember_controller.set('evidence', data.data.evidence === 'required')
-          return false
         }
       })
       .fail(function (jqXHR, textStatus, errorThrown) {

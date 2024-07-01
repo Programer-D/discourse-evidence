@@ -19,18 +19,13 @@ class EvidenceUploaderController < ApplicationController
         ':id' => current_user.id,
       }
     }
-    result = dynamodb.query(query_condition)
-    if current_user.primary_group_id != 41
-      evidence = "required"
-    else
-      evidence = ""
-    end
+
     if result.count != 0
       data = result.items[0]
 
-      render status: 200, json: { status: 200, data: { registered: true, id: data['ID'], company_name: data['Company'], matching: data['Matching'], state: data['Status'], evidence: evidence, flag: true } }
+      render status: 200, json: { status: 200, data: { registered: true, id: data['ID'], company_name: data['Company'], matching: data['Matching'], state: data['Status'], flag: true } }
     else
-      render status: 200, json: { status: 200, data: { registered: false, evidence: evidence, flag: false } }
+      render status: 200, json: { status: 200, data: { registered: false, flag: false } }
     end
 
   end
