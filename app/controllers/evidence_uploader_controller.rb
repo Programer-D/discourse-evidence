@@ -19,7 +19,7 @@ class EvidenceUploaderController < ApplicationController
         ':id' => current_user.id,
       }
     }
-
+    result = dynamodb.query(query_condition)
     if result.count != 0
       data = result.items[0]
 
