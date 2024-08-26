@@ -3,12 +3,16 @@ export default Controller.extend({
   actions: {
     upload_evidence: function (event) {
       const ember_controller = this;
-      let form_data = new FormData($('#evidence_form').get(0))
-      form_data.append('id', Date.now())
-      if (form_data.get('company_name') === "") {
-        $('#state').html('会社名を入力してください。');
-        return false
+      // let form_data = new FormData($('#evidence_form').get(0))
+      // form_data.append('id', Date.now())
+      // if (form_data.get('company_name') === "") {
+      //   $('#state').html('会社名を入力してください。');
+      //   return false
+      // }
+      if($('#evidence_form').get(0).reportValidity()){
+        return false;
       }
+      if(form_data.get())
       $.ajax({
         url: "/evidences",
         type: "POST",

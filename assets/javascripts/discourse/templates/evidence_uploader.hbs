@@ -16,10 +16,10 @@
       <input type="hidden" name="need_evidence" value="{{evidence}}">
 
       <p>会社名を、株式会社も含めた正式名称で入力してください。</p>
-      <input type="text" name="company_name">
+      <input type="text" name="company_name" required>
       <hr>
       <label>
-        <input type="file" class="form-control" name="evidence" id="image" required/>
+        <input type="file" class="form-control" name="evidence" id="image" accept="image/png, image/jpeg" required/>
       </label>
       <p>会社等に在籍していることを確認できる書類（名刺or社員証）＋身分証名証（保険証、運転免許証など）を1枚の画像に収めてください。</p>
 
