@@ -12,7 +12,6 @@ export default Controller.extend({
       if($('#evidence_form').get(0).reportValidity()){
         return false;
       }
-      if(form_data.get())
       $.ajax({
         url: "/evidences",
         type: "POST",
