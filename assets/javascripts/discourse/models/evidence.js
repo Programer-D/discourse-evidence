@@ -1,7 +1,7 @@
 import RestModel from 'discourse/models/rest';
 
 /**
- * Has to be implemented for `../controllers/evidence-image-uploader.js.es6` in order to use
+ * Has to be implemented for `../controllers/evidence-image-uploader.js` in order to use
  * Discourse’s store properly.
  */
 export default RestModel.extend({
